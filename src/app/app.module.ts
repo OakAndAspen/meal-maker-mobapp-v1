@@ -3,7 +3,7 @@ import {ErrorHandler, NgModule} from '@angular/core';
 import {IonicApp, IonicErrorHandler, IonicModule} from 'ionic-angular';
 import {SplashScreen} from '@ionic-native/splash-screen';
 import {StatusBar} from '@ionic-native/status-bar';
-import { HttpClientModule } from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 
 import {MyApp} from './app.component';
 import {HomePage} from '../pages/home/home';
@@ -12,6 +12,8 @@ import {MyMealsPage} from '../pages/my-meals/my-meals';
 import {MyRecipesPage} from '../pages/my-recipes/my-recipes';
 import {AuthProvider} from '../providers/auth/auth';
 import {LoginPage} from "../pages/login/login";
+import {IonicStorageModule} from "@ionic/storage";
+import {AuthInterceptorProvider} from '../providers/auth-interceptor/auth-interceptor';
 
 @NgModule({
     declarations: [
@@ -25,7 +27,8 @@ import {LoginPage} from "../pages/login/login";
     imports: [
         BrowserModule,
         HttpClientModule,
-        IonicModule.forRoot(MyApp)
+        IonicModule.forRoot(MyApp),
+        IonicStorageModule.forRoot()
     ],
     bootstrap: [IonicApp],
     entryComponents: [
@@ -40,7 +43,9 @@ import {LoginPage} from "../pages/login/login";
         StatusBar,
         SplashScreen,
         {provide: ErrorHandler, useClass: IonicErrorHandler},
-        AuthProvider
+        AuthProvider,
+        AuthInterceptorProvider,
+        { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorProvider, multi: true }
     ]
 })
 export class AppModule {
