@@ -26,6 +26,7 @@ export class MyGroupsPage {
         console.log("Hello...");
         this.getGroups().then(response => {
             console.log("Response: ", response);
+            // @ts-ignore
             this.groups = response.groups;
         });
     }
