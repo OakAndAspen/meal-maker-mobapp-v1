@@ -22,19 +22,9 @@ export class MyRecipesPage {
     }
 
     ionViewDidLoad() {
-        this.getRecipes().then(response => {
+        this.http.get(Config.apiUrl+'/recipes').subscribe(data => {
             // @ts-ignore
-            this.recipes = response.recipes;
-        });
-    }
-
-    getRecipes() {
-        return new Promise(resolve => {
-            this.http.get(Config.apiUrl + '/recipes').subscribe(data => {
-                resolve(data);
-            }, err => {
-                console.log(err);
-            });
+            this.recipes = data.recipes;
         });
     }
 

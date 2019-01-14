@@ -4,14 +4,9 @@ import {AuthProvider} from "../../providers/auth/auth";
 import {HttpClient} from '@angular/common/http';
 import {MealDetailsPage} from "../meal-details/meal-details";
 import {Geolocation} from '@ionic-native/geolocation';
-import {latLng, MapOptions, tileLayer, marker, Marker, Map} from 'leaflet';
-
-/**
- * Generated class for the MyMealsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import {latLng, Map, MapOptions, Marker, marker, tileLayer} from 'leaflet';
+import Config from "../../config";
+import {NewMealPage} from "../new-meal/new-meal";
 
 @Component({
     selector: 'page-my-meals',
@@ -40,7 +35,6 @@ export class MyMealsPage {
             zoom: 13,
             center: latLng(46.778186, 6.641524)
         };
-
         this.mapMarkers = [
             marker([ 46.778186, 6.641524 ]).bindTooltip('Hello'),
             marker([ 46.780796, 6.647395 ]),
@@ -49,9 +43,8 @@ export class MyMealsPage {
     }
 
     ionViewDidLoad() {
-        const url = 'https://comem-travel-log-api.herokuapp.com/api/trips';
-        this.http.get(url).subscribe(trips => {
-            console.log(`Trips loaded`, trips);
+        this.http.get(Config.apiUrl+'/meals').subscribe(meals => {
+            console.log('Meals loaded', meals);
         });
 
         const geolocationPromise = this.geolocation.getCurrentPosition();
@@ -69,6 +62,10 @@ export class MyMealsPage {
             const center = this.map.getCenter();
             console.log(`Map moved to ${center.lng}, ${center.lat}`);
         });
+    }
+
+    goToNewMeal() {
+        this.navCtrl.push(NewMealPage);
     }
 
     goToDetails() {

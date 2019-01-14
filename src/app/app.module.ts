@@ -19,6 +19,7 @@ import {MyMealsPage} from '../pages/my-meals/my-meals';
 import {MyRecipesPage} from '../pages/my-recipes/my-recipes';
 import {NewGroupPage} from '../pages/new-group/new-group';
 import {NewRecipePage} from "../pages/new-recipe/new-recipe";
+import {NewMealPage} from "../pages/new-meal/new-meal";
 import {MealDetailsPage} from '../pages/meal-details/meal-details';
 import {AuthProvider} from '../providers/auth/auth';
 import {AuthInterceptorProvider} from '../providers/auth-interceptor/auth-interceptor';
@@ -32,6 +33,7 @@ import {AuthInterceptorProvider} from '../providers/auth-interceptor/auth-interc
         MyRecipesPage,
         NewGroupPage,
         NewRecipePage,
+        NewMealPage,
         LoginPage,
         MealDetailsPage
     ],
@@ -51,6 +53,7 @@ import {AuthInterceptorProvider} from '../providers/auth-interceptor/auth-interc
         MyRecipesPage,
         NewGroupPage,
         NewRecipePage,
+        NewMealPage,
         LoginPage,
         MealDetailsPage
     ],

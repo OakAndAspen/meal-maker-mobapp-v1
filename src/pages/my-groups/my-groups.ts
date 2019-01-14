@@ -23,21 +23,9 @@ export class MyGroupsPage {
     }
 
     ionViewDidLoad() {
-        console.log("Hello...");
-        this.getGroups().then(response => {
-            console.log("Response: ", response);
+        this.http.get(Config.apiUrl+'/groups').subscribe(data => {
             // @ts-ignore
-            this.groups = response.groups;
-        });
-    }
-
-    getGroups() {
-        return new Promise(resolve => {
-            this.http.get(Config.apiUrl+'/groups').subscribe(data => {
-                resolve(data);
-            }, err => {
-                console.log(err);
-            });
+            this.groups = data.groups;
         });
     }
 
