@@ -58,7 +58,6 @@ export class AuthProvider {
     logOut() {
         this.authSource.next(null);
         this.storage.remove('auth');
-        console.log('User logged out');
     }
 
     private saveAuth(auth: AuthResponse): Observable<void> {

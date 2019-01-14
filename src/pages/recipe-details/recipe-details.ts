@@ -4,25 +4,25 @@ import {HttpClient} from "@angular/common/http";
 import Config from "../../config";
 
 @Component({
-    selector: 'page-meal-details',
-    templateUrl: 'meal-details.html',
+    selector: 'page-recipe-details',
+    templateUrl: 'recipe-details.html',
 })
-export class MealDetailsPage {
+export class RecipeDetailsPage {
 
-    meal: Object;
+    recipe: Object;
 
     constructor(
         public navCtrl: NavController,
         public navParams: NavParams,
         public http: HttpClient
     ) {
-        this.meal = this.navParams.data.meal;
+        this.recipe = this.navParams.data.recipe;
     }
 
     ionViewDidLoad() {
         // @ts-ignore
-        this.http.get(Config.apiUrl + '/meals/' + this.meal._id).subscribe(data => {
-            this.meal = data;
+        this.http.get(Config.apiUrl + '/recipes/' + this.recipe._id).subscribe(data => {
+            this.recipe = data;
         });
     }
 

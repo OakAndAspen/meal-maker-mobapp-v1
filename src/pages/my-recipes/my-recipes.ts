@@ -4,6 +4,7 @@ import Config from "../../config";
 import {HttpClient} from "@angular/common/http";
 import {NewGroupPage} from "../new-group/new-group";
 import {NewRecipePage} from "../new-recipe/new-recipe";
+import {RecipeDetailsPage} from "../recipe-details/recipe-details";
 
 @Component({
     selector: 'page-my-recipes',
@@ -22,7 +23,7 @@ export class MyRecipesPage {
     }
 
     ionViewDidLoad() {
-        this.http.get(Config.apiUrl+'/recipes').subscribe(data => {
+        this.http.get(Config.apiUrl + '/recipes').subscribe(data => {
             // @ts-ignore
             this.recipes = data.recipes;
         });
@@ -30,5 +31,9 @@ export class MyRecipesPage {
 
     goToNewRecipe() {
         this.navCtrl.push(NewRecipePage);
+    }
+
+    goToDetails(recipe) {
+        this.navCtrl.push(RecipeDetailsPage, {recipe:recipe});
     }
 }

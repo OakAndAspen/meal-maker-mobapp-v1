@@ -13,13 +13,15 @@ import {Camera} from '@ionic-native/camera';
 /* --- PROJECT SOURCES --- */
 import {MyApp} from './app.component';
 import {HomePage} from '../pages/home/home';
-import {LoginPage} from "../pages/login/login";
+import {LoginPage} from '../pages/login/login';
 import {MyGroupsPage} from '../pages/my-groups/my-groups';
-import {MyMealsPage} from '../pages/my-meals/my-meals';
 import {MyRecipesPage} from '../pages/my-recipes/my-recipes';
+import {MyMealsPage} from '../pages/my-meals/my-meals';
 import {NewGroupPage} from '../pages/new-group/new-group';
-import {NewRecipePage} from "../pages/new-recipe/new-recipe";
-import {NewMealPage} from "../pages/new-meal/new-meal";
+import {NewRecipePage} from '../pages/new-recipe/new-recipe';
+import {NewMealPage} from '../pages/new-meal/new-meal';
+import {GroupDetailsPage} from '../pages/group-details/group-details';
+import {RecipeDetailsPage} from '../pages/recipe-details/recipe-details';
 import {MealDetailsPage} from '../pages/meal-details/meal-details';
 import {AuthProvider} from '../providers/auth/auth';
 import {AuthInterceptorProvider} from '../providers/auth-interceptor/auth-interceptor';
@@ -28,13 +30,15 @@ import {AuthInterceptorProvider} from '../providers/auth-interceptor/auth-interc
     declarations: [
         MyApp,
         HomePage,
+        LoginPage,
         MyGroupsPage,
         MyMealsPage,
         MyRecipesPage,
         NewGroupPage,
         NewRecipePage,
         NewMealPage,
-        LoginPage,
+        GroupDetailsPage,
+        RecipeDetailsPage,
         MealDetailsPage
     ],
     imports: [
@@ -48,13 +52,15 @@ import {AuthInterceptorProvider} from '../providers/auth-interceptor/auth-interc
     entryComponents: [
         MyApp,
         HomePage,
+        LoginPage,
         MyGroupsPage,
         MyMealsPage,
         MyRecipesPage,
         NewGroupPage,
         NewRecipePage,
         NewMealPage,
-        LoginPage,
+        GroupDetailsPage,
+        RecipeDetailsPage,
         MealDetailsPage
     ],
     providers: [

@@ -18,6 +18,7 @@ export class MyMealsPage {
     mapOptions: MapOptions;
     mapMarkers: Marker[];
     map: Map;
+    meals: Object[];
 
     constructor(
         private auth: AuthProvider,
@@ -36,15 +37,16 @@ export class MyMealsPage {
             center: latLng(46.778186, 6.641524)
         };
         this.mapMarkers = [
-            marker([ 46.778186, 6.641524 ]).bindTooltip('Hello'),
-            marker([ 46.780796, 6.647395 ]),
-            marker([ 46.784992, 6.652267 ])
+            marker([46.778186, 6.641524]).bindTooltip('Hello'),
+            marker([46.780796, 6.647395]),
+            marker([46.784992, 6.652267])
         ];
     }
 
     ionViewDidLoad() {
-        this.http.get(Config.apiUrl+'/meals').subscribe(meals => {
-            console.log('Meals loaded', meals);
+        this.http.get(Config.apiUrl + '/meals').subscribe(data => {
+            // @ts-ignore
+            this.meals = data.meals;
         });
 
         const geolocationPromise = this.geolocation.getCurrentPosition();
@@ -68,8 +70,8 @@ export class MyMealsPage {
         this.navCtrl.push(NewMealPage);
     }
 
-    goToDetails() {
-        this.navCtrl.push(MealDetailsPage);
+    goToDetails(meal) {
+        this.navCtrl.push(MealDetailsPage, {meal: meal});
     }
 
     logOut() {

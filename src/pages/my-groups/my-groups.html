@@ -8,7 +8,7 @@
 <ion-content padding>
     <button ion-button (click)='goToNewGroup()'>Create a new group</button>
     <ion-list>
-        <ion-item *ngFor="let group of groups">
+        <ion-item *ngFor="let group of groups" (click)='goToDetails(group)'>
             <ion-avatar item-start>
                 <img src="assets/icon/group.png" alt="Group">
             </ion-avatar>

@@ -4,6 +4,7 @@ import {Camera, CameraOptions} from '@ionic-native/camera';
 import {NewGroupPage} from "../new-group/new-group";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import Config from '../../config.js';
+import {GroupDetailsPage} from "../group-details/group-details";
 
 @Component({
     selector: 'page-my-groups',
@@ -31,5 +32,9 @@ export class MyGroupsPage {
 
     goToNewGroup() {
         this.navCtrl.push(NewGroupPage);
+    }
+
+    goToDetails(group) {
+        this.navCtrl.push(GroupDetailsPage, {group:group});
     }
 }
