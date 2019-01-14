@@ -1,5 +1,7 @@
 {
   "name": "meal-maker-mobapp-v1",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "ionic-angular"
 }

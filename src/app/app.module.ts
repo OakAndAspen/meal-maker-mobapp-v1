@@ -1,18 +1,24 @@
+/* --- EXTERNAL SOURCES --- */
 import {BrowserModule} from '@angular/platform-browser';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {ErrorHandler, NgModule} from '@angular/core';
 import {IonicApp, IonicErrorHandler, IonicModule} from 'ionic-angular';
 import {SplashScreen} from '@ionic-native/splash-screen';
 import {StatusBar} from '@ionic-native/status-bar';
-import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
+import {IonicStorageModule} from "@ionic/storage";
+import {Geolocation} from '@ionic-native/geolocation';
+import { LeafletModule } from '@asymmetrik/ngx-leaflet';
+import { Camera } from '@ionic-native/camera';
 
+/* --- PROJECT SOURCES --- */
 import {MyApp} from './app.component';
 import {HomePage} from '../pages/home/home';
+import {LoginPage} from "../pages/login/login";
 import {MyGroupsPage} from '../pages/my-groups/my-groups';
 import {MyMealsPage} from '../pages/my-meals/my-meals';
 import {MyRecipesPage} from '../pages/my-recipes/my-recipes';
+import {MealDetailsPage} from '../pages/meal-details/meal-details';
 import {AuthProvider} from '../providers/auth/auth';
-import {LoginPage} from "../pages/login/login";
-import {IonicStorageModule} from "@ionic/storage";
 import {AuthInterceptorProvider} from '../providers/auth-interceptor/auth-interceptor';
 
 @NgModule({
@@ -22,13 +28,15 @@ import {AuthInterceptorProvider} from '../providers/auth-interceptor/auth-interc
         MyGroupsPage,
         MyMealsPage,
         MyRecipesPage,
-        LoginPage
+        LoginPage,
+        MealDetailsPage
     ],
     imports: [
         BrowserModule,
         HttpClientModule,
         IonicModule.forRoot(MyApp),
-        IonicStorageModule.forRoot()
+        IonicStorageModule.forRoot(),
+        LeafletModule.forRoot()
     ],
     bootstrap: [IonicApp],
     entryComponents: [
@@ -37,7 +45,8 @@ import {AuthInterceptorProvider} from '../providers/auth-interceptor/auth-interc
         MyGroupsPage,
         MyMealsPage,
         MyRecipesPage,
-        LoginPage
+        LoginPage,
+        MealDetailsPage
     ],
     providers: [
         StatusBar,
@@ -45,7 +54,9 @@ import {AuthInterceptorProvider} from '../providers/auth-interceptor/auth-interc
         {provide: ErrorHandler, useClass: IonicErrorHandler},
         AuthProvider,
         AuthInterceptorProvider,
-        { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorProvider, multi: true }
+        {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorProvider, multi: true},
+        Geolocation,
+        Camera
     ]
 })
 export class AppModule {

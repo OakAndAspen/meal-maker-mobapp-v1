@@ -6,13 +6,14 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>MyGroups</ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <ion-title>MyGroups</ion-title>
+    </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-
+    <button ion-button (click)='takePicture()'>Button</button>
+    <img *ngIf='pictureData' src='data:image/jpeg;base64,{{ pictureData }}'/>
 </ion-content>

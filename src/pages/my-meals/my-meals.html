@@ -20,5 +20,10 @@
 
 
 <ion-content padding>
-
+    <button ion-button (click)='goToDetails()'>Go to details</button>
+    <div class='map' leaflet
+         [leafletOptions]='mapOptions'
+         [leafletLayers]='mapMarkers'
+         (leafletMapReady)='onMapReady($event)'>
+    </div>
 </ion-content>
