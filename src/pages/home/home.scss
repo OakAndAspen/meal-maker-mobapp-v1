@@ -1,3 +1,21 @@
 page-home {
+    background-color: #a1bb51;
 
+    ion-title {
+        font-family: "ZCOOL KuaiLe", sans-serif;
+    }
+
+    .toolbar-background {
+        background:
+            linear-gradient(
+                    rgba(162, 186, 82, 0.7),
+                    rgba(162, 186, 82, 0.7)
+            ),
+            url("https://i1.wp.com/onedollargraphics.market/wp-content/uploads/2018/02/restaurant.png?fit=1005%2C591");
+        background-size: 70%;
+    }
+
+    #Tabs a {
+        background-color: #a1bb51;
+    }
 }

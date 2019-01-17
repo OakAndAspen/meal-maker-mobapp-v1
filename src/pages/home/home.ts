@@ -3,6 +3,7 @@ import {NavController} from 'ionic-angular';
 import {MyGroupsPage} from '../my-groups/my-groups';
 import {MyRecipesPage} from '../my-recipes/my-recipes';
 import {MyMealsPage} from '../my-meals/my-meals';
+import {AuthProvider} from "../../providers/auth/auth";
 
 export interface HomePageTab {
     title: string;
@@ -18,12 +19,19 @@ export class HomePage {
 
     tabs: HomePageTab[];
 
-    constructor(public navCtrl: NavController) {
+    constructor(
+        public navCtrl: NavController,
+        private auth: AuthProvider
+    ) {
         this.tabs = [
-            {title: 'MY MEALS', icon: 'list', component: MyMealsPage},
-            {title: 'MY GROUPS', icon: 'add', component: MyGroupsPage},
-            {title: 'MY RECIPES', icon: 'map', component: MyRecipesPage}
+            {title: 'Meals', icon: 'time', component: MyMealsPage},
+            {title: 'Groups', icon: 'people', component: MyGroupsPage},
+            {title: 'Recipes', icon: 'pizza', component: MyRecipesPage}
         ];
+    }
+
+    logOut() {
+        this.auth.logOut();
     }
 
 }

@@ -1,5 +1,17 @@
-<ion-tabs>
-    <ion-tab *ngFor='let tab of tabs'
-             [tabTitle]='tab.title' [tabIcon]='tab.icon' [root]='tab.component'>
-    </ion-tab>
-</ion-tabs>
+<ion-header>
+    <ion-navbar>
+        <ion-title>Meal Maker</ion-title>
+        <!-- Logout button -->
+        <ion-buttons end>
+            <button ion-button icon-only (click)='logOut()'>
+                <ion-icon name='log-out'></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-tabs class="tabs-icon-text" id="Tabs" tabsPlacement="top">
+        <ion-tab *ngFor='let tab of tabs' [tabTitle]='tab.title' [tabIcon]='tab.icon' [root]='tab.component'></ion-tab>
+    </ion-tabs>
+</ion-content>

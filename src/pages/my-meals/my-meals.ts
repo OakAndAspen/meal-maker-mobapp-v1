@@ -21,7 +21,6 @@ export class MyMealsPage {
     meals: Object[];
 
     constructor(
-        private auth: AuthProvider,
         public http: HttpClient,
         public navCtrl: NavController,
         public navParams: NavParams,
@@ -74,7 +73,5 @@ export class MyMealsPage {
         this.navCtrl.push(MealDetailsPage, {meal: meal});
     }
 
-    logOut() {
-        this.auth.logOut();
-    }
+
 }
