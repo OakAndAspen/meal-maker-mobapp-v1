@@ -1,6 +1,9 @@
 import {Component} from '@angular/core';
 import {NavController, NavParams} from 'ionic-angular';
 import {Camera, CameraOptions} from '@ionic-native/camera';
+import Config from "../../config";
+import {HttpClient} from "@angular/common/http";
+import {User} from "../../models/user";
 
 @Component({
     selector: 'page-new-group',
@@ -8,26 +11,43 @@ import {Camera, CameraOptions} from '@ionic-native/camera';
 })
 export class NewGroupPage {
 
-    pictureData: string;
+    users: User[];
+    selected: string[];
+    name: string;
+    message: string;
 
     constructor(
         public navCtrl: NavController,
         public navParams: NavParams,
-        private camera: Camera) {
+        private http: HttpClient
+    ) {
+        this.users = [];
+        this.selected = [];
+        this.name = '';
+        this.message = "Save";
     }
 
-    takePicture() {
-        const options: CameraOptions = {
-            quality: 100,
-            destinationType: this.camera.DestinationType.DATA_URL,
-            encodingType: this.camera.EncodingType.JPEG,
-            mediaType: this.camera.MediaType.PICTURE
-        };
-        this.camera.getPicture(options).then(pictureData => {
-            this.pictureData = pictureData;
-        }).catch(err => {
-            console.warn(`Could not take picture because: ${err.message}`);
+    ionViewDidLoad() {
+        this.http.get(Config.apiUrl + '/users').subscribe(data => {
+            // @ts-ignore
+            this.users = data.users;
         });
     }
 
+    select(user) {
+        if(this.selected.find(u => u === user._id)) {
+            this.selected = this.selected.filter(u => u !== user._id);
+        } else this.selected.push(user._id);
+    }
+
+    send() {
+        this.message = "Saving...";
+        let data = {
+            name: this.name,
+            members: this.selected
+        };
+        this.http.post(Config.apiUrl + '/groups', data).subscribe(data => {
+            this.message = "Saved !";
+        });
+    }
 }

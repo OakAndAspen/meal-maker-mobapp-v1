@@ -1,4 +1,3 @@
-
 <ion-header>
     <ion-navbar>
         <ion-title>Create a new group</ion-title>
@@ -6,7 +5,17 @@
 </ion-header>
 
 <ion-content padding>
-    <!--<button ion-button (click)='takePicture()'>Button</button>
-    <img *ngIf='pictureData' src='data:image/jpeg;base64,{{ pictureData }}'/>-->
+
+    <ion-input type="text" placeholder="Group's name" [(ngModel)]="name"></ion-input>
+    <ion-list>
+        <ion-item *ngFor="let user of users" (click)='select(user)'
+                  [style.background-color]="selected.indexOf(user._id) !== -1  && '#D8E6B5'">
+            <ion-avatar item-start>
+                <img src="assets/icon/user.png" alt="User"/>
+            </ion-avatar>
+            <h2>{{user.userName}}</h2>
+        </ion-item>
+    </ion-list>
+    <button ion-button (click)="send()" [disabled]="!(name && selected.length)">{{message}}</button>
 
 </ion-content>
