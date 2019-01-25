@@ -1,8 +1,9 @@
 export class User {
-    id: string;
+    /*id: string;
     href: string;
-    name: string;
-    userName: string;
+    name: string;*/
     _id: string;
-    email: string
+    userName: string;
+    email: string;
+    registration: Date;
 }
