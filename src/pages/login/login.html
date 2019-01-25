@@ -5,7 +5,7 @@
 -->
 <ion-header>
     <ion-navbar>
-        <ion-title>Login</ion-title>
+        <ion-title>Sign in</ion-title>
     </ion-navbar>
 </ion-header>
 
@@ -13,10 +13,10 @@
 <ion-content padding>
     <form (submit)='onSubmit($event)'>
         <ion-list>
-            <!-- Name input -->
+            <!-- Username input -->
             <ion-item>
-                <ion-label floating>Name</ion-label>
-                <ion-input type='text' name='name'
+                <ion-label floating>User name</ion-label>
+                <ion-input type='text' name='userName'
                            #nameInput='ngModel' [(ngModel)]='authRequest.userName' required></ion-input>
             </ion-item>
             <!-- Error message displayed if the name is invalid -->
@@ -40,6 +40,10 @@
             <button type='submit' [disabled]='form.invalid' ion-button block>Log in</button>
             <!-- Error message displayed if the login failed -->
             <p *ngIf='loginError' ion-text color='danger'>Name or password is invalid.</p>
+        </div>
+        
+        <div padding>
+            <button ion-button (click)="goToSignUp()">Don't have an account? Sign up!</button>
         </div>
     </form>
 </ion-content>

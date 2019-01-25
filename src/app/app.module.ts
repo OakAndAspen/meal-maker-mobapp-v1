@@ -14,6 +14,7 @@ import {Camera} from '@ionic-native/camera';
 import {MyApp} from './app.component';
 import {HomePage} from '../pages/home/home';
 import {LoginPage} from '../pages/login/login';
+import {SignUpPage} from "../pages/sign-up/sign-up";
 import {MyGroupsPage} from '../pages/my-groups/my-groups';
 import {MyRecipesPage} from '../pages/my-recipes/my-recipes';
 import {MyMealsPage} from '../pages/my-meals/my-meals';
@@ -31,6 +32,7 @@ import {AuthInterceptorProvider} from '../providers/auth-interceptor/auth-interc
         MyApp,
         HomePage,
         LoginPage,
+        SignUpPage,
         MyGroupsPage,
         MyMealsPage,
         MyRecipesPage,
@@ -53,6 +55,7 @@ import {AuthInterceptorProvider} from '../providers/auth-interceptor/auth-interc
         MyApp,
         HomePage,
         LoginPage,
+        SignUpPage,
         MyGroupsPage,
         MyMealsPage,
         MyRecipesPage,

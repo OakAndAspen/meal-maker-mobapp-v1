@@ -5,6 +5,8 @@ import { NavController, NavParams } from 'ionic-angular';
 import { AuthRequest } from '../../models/auth-request';
 import { AuthProvider } from '../../providers/auth/auth';
 import { HomePage } from '../home/home';
+import {NewGroupPage} from "../new-group/new-group";
+import {SignUpPage} from "../sign-up/sign-up";
 
 @Component({
     templateUrl: 'login.html'
@@ -29,5 +31,9 @@ export class LoginPage {
             this.loginError = true;
             console.warn(`Authentication failed: ${err.message}`);
         });
+    }
+
+    goToSignUp() {
+        this.navCtrl.push(SignUpPage);
     }
 }
