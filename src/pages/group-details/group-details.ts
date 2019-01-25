@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {NavController, NavParams} from 'ionic-angular';
 import {HttpClient} from "@angular/common/http";
 import {config} from "../../app/config";
+import {Group} from "../../models/group";
 
 @Component({
     selector: 'page-group-details',
@@ -9,7 +10,7 @@ import {config} from "../../app/config";
 })
 export class GroupDetailsPage {
 
-    group: Object;
+    group: Group;
 
     constructor(
         public navCtrl: NavController,
@@ -20,10 +21,23 @@ export class GroupDetailsPage {
     }
 
     ionViewDidLoad() {
-        // @ts-ignore
-        this.http.get(config.apiUrl + '/groups/' + this.group._id).subscribe(data => {
-            this.group = data;
-        });
-    }
+        let members = this.group.members;
+        let recipes = this.group.recipes;
+        this.group.members = [];
+        this.group.recipes = [];
 
+        for (let m of members) {
+            this.http.get(config.apiUrl + '/users/' + m).subscribe(data => {
+                // @ts-ignore
+                this.group.members.push(data);
+            });
+        }
+
+        for (let r of recipes) {
+            this.http.get(config.apiUrl + '/recipes/' + r).subscribe(data => {
+                // @ts-ignore
+                this.group.recipes.push(data);
+            });
+        }
+    }
 }

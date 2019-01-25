@@ -4,6 +4,26 @@
     </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-    {{group.members.length}} members
+<ion-content>
+    <ion-list>
+
+        <ion-item-divider color="light">Members</ion-item-divider>
+        <ion-item *ngFor="let m of group.members">
+            <ion-avatar item-start>
+                <img src="assets/icon/user.png" alt="User">
+            </ion-avatar>
+            <h2>{{m.userName}}</h2>
+            <ion-icon name="close" item-end></ion-icon>
+        </ion-item>
+
+        <ion-item-divider color="light">Recipes</ion-item-divider>
+        <ion-item *ngFor="let r of group.recipes">
+            <ion-avatar item-start>
+                <img src="assets/icon/recipe.png" alt="Recipe">
+            </ion-avatar>
+            <h2>{{r.name}}</h2>
+            <ion-icon name="close" item-end></ion-icon>
+        </ion-item>
+
+    </ion-list>
 </ion-content>
