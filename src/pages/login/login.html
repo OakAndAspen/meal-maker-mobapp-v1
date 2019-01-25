@@ -12,7 +12,7 @@
 
 <ion-content padding>
     <form (submit)='onSubmit($event)'>
-        <ion-list>
+        <ion-list no-lines>
             <!-- Username input -->
             <ion-item>
                 <ion-label floating>User name</ion-label>
@@ -20,7 +20,7 @@
                            #nameInput='ngModel' [(ngModel)]='authRequest.userName' required></ion-input>
             </ion-item>
             <!-- Error message displayed if the name is invalid -->
-            <ion-item *ngIf='nameInput.invalid && nameInput.dirty' no-lines>
+            <ion-item *ngIf='nameInput.invalid && nameInput.dirty'>
                 <p ion-text color='danger'>Name is required.</p>
             </ion-item>
             <!-- Password input -->
@@ -30,20 +30,24 @@
                            #passwordInput='ngModel' [(ngModel)]='authRequest.password' required></ion-input>
             </ion-item>
             <!-- Error message displayed if the password is invalid -->
-            <ion-item *ngIf='passwordInput.invalid && passwordInput.dirty' no-lines>
+            <ion-item *ngIf='passwordInput.invalid && passwordInput.dirty'>
                 <p ion-text color='danger'>Password is required.</p>
             </ion-item>
-        </ion-list>
 
-        <div padding>
             <!-- Submit button -->
-            <button type='submit' [disabled]='form.invalid' ion-button block>Log in</button>
+            <ion-item>
+                <button type='submit' [disabled]='form.invalid' ion-button full>Log in</button>
+            </ion-item>
+
             <!-- Error message displayed if the login failed -->
-            <p *ngIf='loginError' ion-text color='danger'>Name or password is invalid.</p>
-        </div>
-        
-        <div padding>
-            <button ion-button (click)="goToSignUp()">Don't have an account? Sign up!</button>
-        </div>
+            <ion-item *ngIf='loginError'>
+                <p ion-text color='danger'>Name or password is invalid.</p>
+            </ion-item>
+
+            <!-- Signup button -->
+            <ion-item>
+                <button ion-button full color="secondary" (click)="goToSignUp()">Don't have an account? Sign up!</button>
+            </ion-item>
+        </ion-list>
     </form>
 </ion-content>

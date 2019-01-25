@@ -6,7 +6,7 @@
 
 <ion-content padding>
     <form (submit)='onSubmit()'>
-        <ion-list>
+        <ion-list no-lines="">
             <!-- Username -->
             <ion-item>
                 <ion-label floating>Username</ion-label>
@@ -24,14 +24,20 @@
                 <ion-label floating>Password</ion-label>
                 <ion-input type='password' name='password' [(ngModel)]='password' required></ion-input>
             </ion-item>
+
+            <!-- Signup button -->
+            <ion-item>
+                <button ion-button full type='submit' [disabled]='!userName || !email || !password'>
+                    Sign up
+                </button>
+            </ion-item>
+
+            <!-- Signin button -->
+            <ion-item>
+                <button ion-button full color="secondary" (click)="goToLogin()">Already have an account? Sign in!
+                </button>
+            </ion-item>
         </ion-list>
 
-        <div padding>
-            <button type='submit' ion-button>Sign up</button>
-        </div>
-        
-        <div padding>
-            <button ion-button (click)="goToLogin()">Already have an account? Sign in!</button>
-        </div>
     </form>
 </ion-content>

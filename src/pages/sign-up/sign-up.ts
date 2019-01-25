@@ -39,6 +39,6 @@ export class SignUpPage {
     }
 
     goToLogin() {
-        this.navCtrl.push(LoginPage);
+        this.navCtrl.pop();
     }
 }
