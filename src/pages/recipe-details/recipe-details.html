@@ -4,6 +4,17 @@
     </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-    {{recipe.description}}
+<ion-content>
+    <ion-card>
+        <ion-img [src]="recipe.imageUrl"></ion-img>
+        <ion-card-header>
+            <ion-card-title>{{recipe.name}}</ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+            <p><i>For {{recipe.servings}} people</i></p>
+            {{recipe.description}}
+        </ion-card-content>
+    </ion-card>
+
 </ion-content>
