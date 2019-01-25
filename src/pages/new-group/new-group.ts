@@ -1,6 +1,5 @@
 import {Component} from '@angular/core';
 import {NavController, NavParams} from 'ionic-angular';
-import {Camera, CameraOptions} from '@ionic-native/camera';
 import {config} from "../../app/config";
 import {HttpClient} from "@angular/common/http";
 import {User} from "../../models/user";
@@ -47,7 +46,7 @@ export class NewGroupPage {
             members: this.selected
         };
         this.http.post(config.apiUrl + '/groups', data).subscribe(data => {
-            this.message = "Saved !";
+            this.navCtrl.pop();
         });
     }
 }

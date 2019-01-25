@@ -1,13 +1,8 @@
-import {Component, ViewChild} from '@angular/core';
-import {NgForm} from '@angular/forms';
+import {Component} from '@angular/core';
 import {NavController, NavParams} from 'ionic-angular';
 
-import {AuthRequest} from '../../models/auth-request';
-import {AuthProvider} from '../../providers/auth/auth';
-import {HomePage} from '../home/home';
 import {HttpClient} from "@angular/common/http";
 import {config} from "../../app/config";
-import {LoginPage} from "../login/login";
 
 @Component({
     templateUrl: 'sign-up.html'
@@ -34,7 +29,7 @@ export class SignUpPage {
             password: this.password
         };
         this.http.post(config.apiUrl + '/signup', data).subscribe(data => {
-            console.log(data);
+            this.navCtrl.pop();
         });
     }
 

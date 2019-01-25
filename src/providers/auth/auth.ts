@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Response } from '@angular/http';
 import { Observable, ReplaySubject } from 'rxjs/Rx';
 import { delayWhen, map } from 'rxjs/operators';
 import { Storage } from '@ionic/storage';

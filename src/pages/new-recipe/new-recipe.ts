@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {NavController, NavParams} from 'ionic-angular';
-import {Camera, CameraOptions} from '@ionic-native/camera';
+import {Camera} from '@ionic-native/camera';
 import {config} from "../../app/config";
 import {HttpClient} from "@angular/common/http";
 import { QimgImage } from '../../models/qimg-image';
@@ -63,8 +63,7 @@ export class NewRecipePage {
         };
 
         this.http.post(config.apiUrl + '/recipes', data).subscribe(data => {
-            // @ts-ignore
-            console.log(data);
+            this.navCtrl.pop();
         });
     }
 }

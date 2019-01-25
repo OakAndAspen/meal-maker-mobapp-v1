@@ -5,7 +5,7 @@ import {Group} from "../../models/group";
 import {HttpClient} from "@angular/common/http";
 import {Recipe} from "../../models/recipe";
 import {Geolocation} from '@ionic-native/geolocation';
-import {LatLng, latLng, Map, MapOptions, Marker, marker, tileLayer} from 'leaflet';
+import {latLng, Map, MapOptions, Marker, tileLayer} from 'leaflet';
 
 @Component({
     selector: 'page-new-meal',

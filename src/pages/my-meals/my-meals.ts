@@ -37,7 +37,14 @@ export class MyMealsPage {
 
     onMapReady(map: Map) {
         this.map = map;
+        this.getMeals();
+    }
 
+    ionViewDidEnter() {
+        this.getMeals();
+    }
+
+    getMeals() {
         this.http.get(config.apiUrl + '/meals').subscribe(data => {
             // @ts-ignore
             this.meals = data.meals;
@@ -45,7 +52,7 @@ export class MyMealsPage {
                 // @ts-ignore
                 return marker([m.location.x, m.location.y]).bindTooltip(m.date.slice(0,10));
             });
-            this.map.panTo(this.mapMarkers[0].getLatLng());
+            if(this.mapMarkers.length) this.map.panTo(this.mapMarkers[0].getLatLng());
         });
     }
 

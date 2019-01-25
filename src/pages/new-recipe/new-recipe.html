@@ -10,7 +10,6 @@
     <ion-label>Servings</ion-label>
     <ion-input type="number" id="servings" [(ngModel)]="servings" placeholder="Servings"></ion-input>
     <button ion-button (click)='takePicture()'>Take a picture of this recipe</button>
-    <!--<img *ngIf='pictureData' src='data:image/jpeg;base64,{{ pictureData }}' [alt]="name"/>-->
-    <img *ngIf='picture' [src]='picture.url'/>
+    <img *ngIf='picture' [src]='picture.url' alt="Recipe"/>
     <button ion-button (click)='save()'>Save</button>
 </ion-content>
