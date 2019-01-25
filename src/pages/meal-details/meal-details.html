@@ -1,9 +1,13 @@
 <ion-header>
     <ion-navbar>
-        <ion-title>Meal n°{{meal._id}}</ion-title>
+        <ion-title>{{meal.recipe ? meal.recipe.name: "Loading..."}}</ion-title>
     </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-    {{meal.participants.length}} participants
+    <p>{{meal.date.slice(0,10)}} at {{meal.date.slice(11,16)}}</p>
+    <ion-list>
+        <ion-item *ngFor="let p of meal.participants">{{p.userName}}</ion-item>
+    </ion-list>
+
 </ion-content>

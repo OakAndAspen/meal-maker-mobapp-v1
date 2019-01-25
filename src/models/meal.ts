@@ -7,6 +7,6 @@ export class Meal {
     group: Group;
     participants: User[];
     recipe: Recipe;
-    date: Date;
+    date: string;
     location: Object;
 }
