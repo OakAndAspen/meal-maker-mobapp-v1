@@ -5,30 +5,54 @@
 </ion-header>
 
 <ion-content>
-    <ion-list *ngIf="!recipes && groups">
-        <!-- Select the group -->
-        <ion-item>
-            <ion-label>Choose a group</ion-label>
-            <ion-select [(ngModel)]="group">
-                <ion-option [value]="g" *ngFor="let g of groups">{{g.name}}</ion-option>
-            </ion-select>
-        </ion-item>
+    <div *ngIf="!recipes && groups">
+        <ion-list>
+            <!-- Select the group -->
+            <ion-item>
+                <ion-label>Choose a group</ion-label>
+                <ion-select [(ngModel)]="group">
+                    <ion-option [value]="g" *ngFor="let g of groups">{{g.name}}</ion-option>
+                </ion-select>
+            </ion-item>
 
-        <!-- Choose a date -->
-        <ion-item>
-            <ion-label>Choose a date</ion-label>
-            <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="date"></ion-datetime>
-        </ion-item>
+            <!-- Choose a date -->
+            <ion-item>
+                <ion-label>Choose a date</ion-label>
+                <ion-datetime displayFormat="YYYY-MM-DD" pickerFormat="DD.MM.YYYY" [(ngModel)]="date"></ion-datetime>
+            </ion-item>
 
-        <!-- "Find a recipe" button" -->
-        <ion-item>
-            <button ion-button (click)="findRecipe()">Find a recipe</button>
-        </ion-item>
-    </ion-list>
+            <!-- Choose a time -->
+            <ion-item>
+                <ion-label>Choose a time</ion-label>
+                <ion-datetime displayFormat="HH:mm" [(ngModel)]="time"></ion-datetime>
+            </ion-item>
+
+            <!-- "Find a recipe" button" -->
+            <ion-item>
+                <button ion-button full (click)="findRecipe()">Find a recipe</button>
+            </ion-item>
+        </ion-list>
+
+        <!-- Map -->
+        <div class='newMealMap' leaflet
+             [leafletOptions]='mapOptions'
+             [leafletLayers]='mapMarkers'
+             (leafletMapReady)='onMapReady($event)'
+             (leafletClick)="onClick($event)">
+        </div>
+    </div>
 
     <!-- Select the recipe -->
-    <ion-select [(ngModel)]="recipe" *ngIf="recipes">
-        <ion-option [value]="r" *ngFor="let r of recipes">{{r.name}}</ion-option>
-    </ion-select>
+    <ion-list *ngIf="recipes">
+        <ion-item>
+            <ion-label>Choose a recipe</ion-label>
+            <ion-select [(ngModel)]="recipe">
+                <ion-option [value]="r" *ngFor="let r of recipes">{{r.name}}</ion-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+            <button ion-button full (click)="saveMeal()">Save</button>
+        </ion-item>
+    </ion-list>
 
 </ion-content>
