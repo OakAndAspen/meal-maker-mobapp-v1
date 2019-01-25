@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {NavController, NavParams} from 'ionic-angular';
 import {HttpClient} from "@angular/common/http";
-import Config from "../../config";
+import {config} from "../../app/config";
 
 @Component({
     selector: 'page-meal-details',
@@ -21,7 +21,7 @@ export class MealDetailsPage {
 
     ionViewDidLoad() {
         // @ts-ignore
-        this.http.get(Config.apiUrl + '/meals/' + this.meal._id).subscribe(data => {
+        this.http.get(config.apiUrl + '/meals/' + this.meal._id).subscribe(data => {
             this.meal = data;
         });
     }

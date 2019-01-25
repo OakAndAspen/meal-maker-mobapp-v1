@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {NavController, NavParams} from 'ionic-angular';
 import {Camera, CameraOptions} from '@ionic-native/camera';
-import Config from "../../config";
+import {config} from "../../app/config";
 import {HttpClient} from "@angular/common/http";
 import {User} from "../../models/user";
 
@@ -28,7 +28,7 @@ export class NewGroupPage {
     }
 
     ionViewDidLoad() {
-        this.http.get(Config.apiUrl + '/users').subscribe(data => {
+        this.http.get(config.apiUrl + '/users').subscribe(data => {
             // @ts-ignore
             this.users = data.users;
         });
@@ -46,7 +46,7 @@ export class NewGroupPage {
             name: this.name,
             members: this.selected
         };
-        this.http.post(Config.apiUrl + '/groups', data).subscribe(data => {
+        this.http.post(config.apiUrl + '/groups', data).subscribe(data => {
             this.message = "Saved !";
         });
     }

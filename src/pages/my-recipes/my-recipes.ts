@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {NavController, NavParams} from 'ionic-angular';
-import Config from "../../config";
+import {config} from "../../app/config";
 import {HttpClient} from "@angular/common/http";
 import {NewGroupPage} from "../new-group/new-group";
 import {NewRecipePage} from "../new-recipe/new-recipe";
@@ -23,7 +23,7 @@ export class MyRecipesPage {
     }
 
     ionViewDidLoad() {
-        this.http.get(Config.apiUrl + '/recipes').subscribe(data => {
+        this.http.get(config.apiUrl + '/recipes').subscribe(data => {
             // @ts-ignore
             this.recipes = data.recipes;
         });

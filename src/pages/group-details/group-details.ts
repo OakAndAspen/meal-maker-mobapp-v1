@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {NavController, NavParams} from 'ionic-angular';
 import {HttpClient} from "@angular/common/http";
-import Config from "../../config";
+import {config} from "../../app/config";
 
 @Component({
     selector: 'page-group-details',
@@ -21,7 +21,7 @@ export class GroupDetailsPage {
 
     ionViewDidLoad() {
         // @ts-ignore
-        this.http.get(Config.apiUrl + '/groups/' + this.group._id).subscribe(data => {
+        this.http.get(config.apiUrl + '/groups/' + this.group._id).subscribe(data => {
             this.group = data;
         });
     }

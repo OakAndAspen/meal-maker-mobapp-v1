@@ -6,7 +6,7 @@ import {AuthRequest} from '../../models/auth-request';
 import {AuthProvider} from '../../providers/auth/auth';
 import {HomePage} from '../home/home';
 import {HttpClient} from "@angular/common/http";
-import Config from "../../config.js";
+import {config} from "../../app/config";
 import {LoginPage} from "../login/login";
 
 @Component({
@@ -33,7 +33,7 @@ export class SignUpPage {
             userName: this.userName,
             password: this.password
         };
-        this.http.post(Config.apiUrl + '/signup', data).subscribe(data => {
+        this.http.post(config.apiUrl + '/signup', data).subscribe(data => {
             console.log(data);
         });
     }

@@ -1,4 +1,3 @@
-
 <ion-header>
     <ion-navbar>
         <ion-title>Create a new recipe</ion-title>
@@ -6,7 +5,12 @@
 </ion-header>
 
 <ion-content padding>
-    <!--<button ion-button (click)='takePicture()'>Button</button>
-    <img *ngIf='pictureData' src='data:image/jpeg;base64,{{ pictureData }}'/>-->
-
+    <ion-input type="text" [(ngModel)]="name" placeholder="Name of your recipe"></ion-input>
+    <ion-textarea [(ngModel)]="description" placeholder="Description"></ion-textarea>
+    <ion-label>Servings</ion-label>
+    <ion-input type="number" id="servings" [(ngModel)]="servings" placeholder="Servings"></ion-input>
+    <button ion-button (click)='takePicture()'>Take a picture of this recipe</button>
+    <!--<img *ngIf='pictureData' src='data:image/jpeg;base64,{{ pictureData }}' [alt]="name"/>-->
+    <img *ngIf='picture' [src]='picture.url'/>
+    <button ion-button (click)='save()'>Save</button>
 </ion-content>

@@ -5,7 +5,7 @@ import {HttpClient} from '@angular/common/http';
 import {MealDetailsPage} from "../meal-details/meal-details";
 import {Geolocation} from '@ionic-native/geolocation';
 import {latLng, Map, MapOptions, Marker, marker, tileLayer} from 'leaflet';
-import Config from "../../config";
+import {config} from "../../app/config";
 import {NewMealPage} from "../new-meal/new-meal";
 
 @Component({
@@ -43,7 +43,7 @@ export class MyMealsPage {
     }
 
     ionViewDidLoad() {
-        this.http.get(Config.apiUrl + '/meals').subscribe(data => {
+        this.http.get(config.apiUrl + '/meals').subscribe(data => {
             // @ts-ignore
             this.meals = data.meals;
         });
